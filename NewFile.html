@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>High-End Chatbot</title>
+    <style>
+        /* CSS Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+        .chat-container {
+            width: 500px;
+            height: 600px;
+            margin: 50px auto;
+            background-color: beige;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        .chat-header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+            font-size: 20px;
+            border-bottom: 2px solid #222;
+        }
+        .chat-messages {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding: 20px;
+        }
+        .message {
+            margin-bottom: 15px;
+            padding: 10px 15px;
+            border-radius: 5px;
+            background-color: #f0f0f0;
+        }
+        .message.user {
+            background-color: rgba(255,255,255,0.5);
+            color: #4B0D00;
+            align-self: flex-end;
+        }
+        .message.bot {
+            align-self: flex-start;
+        }
+        .message-text {
+            margin-bottom: 5px;
+            font-size: 16px;
+        }
+        .chat-input {
+            padding: 10px 20px;
+            background-color: #f2f2f2;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 2px solid #ddd;
+        }
+        .chat-input input[type="text"] {
+            flex-grow: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            margin-right: 10px;
+            font-size: 16px;
+            background-color: transparent;
+            border: none;
+            border-bottom: 1px solid #ccc;
+            transition: border-color 0.3s;
+        }
+        .chat-input input[type="text"]:focus {
+            outline: none;
+            border-color: #007bff;
+        }
+        .chat-input button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 16px;
+        }
+        .chat-input button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">
+            Chatbot
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <!-- Chat messages will be dynamically inserted here -->
+        </div>
+        <div class="chat-input">
+            <input type="text" id="userInput" placeholder="How can I assist you?">
+            <button id="sendButton">Send</button>
+        </div>
+    </div>
+    <script>
+        // JavaScript functionality
+        const chatMessages = document.getElementById('chatMessages');
+        const userInput = document.getElementById('userInput');
+        const sendButton = document.getElementById('sendButton');
+
+        // Function to add a message to the chat area
+        function addMessage(message, sender) {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message');
+            messageDiv.classList.add(sender);
+            messageDiv.innerHTML = `
+                <div class="message-text">${message}</div>
+            `;
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // Default message from the bot when the page loads
+        window.onload = () => {
+            addMessage("I'm a chatbot. How can I assist you?", 'bot');
+        };
+
+        // Event listener for send button click
+        sendButton.addEventListener('click', () => {
+            const message = userInput.value.trim();
+            if (message !== '') {
+                addMessage(message, 'user');
+                userInput.value = '';
+                // Simulate bot response
+                setTimeout(() => {
+                    addMessage("I'm a bot. How can I help you?", 'bot');
+                }, 500);
+            }
+        });
+
+        // Event listener for pressing Enter key in the input field
+        userInput.addEventListener('keypress', (event) => {
+            if (event.key === 'Enter') {
+                sendButton.click();
+            }
+        });
+    </script>
+</body>
+</html>
