@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ChatBot</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=yes">
+    <title>Chat Bot UI/UX & html for web Plugin | Css3 Transition </title>
+    <meta name="description" content="Chat Bot UI/UX & html for web" />
+    <meta name="keywords" content="Chat Bot UI/UX & html for web, UI/UX for chat bot, chat bot html, best chatbot, chatbot app, online chat bot plugin" />
+    <meta name="author" content="css3transition" />
+    <link rel="shortcut icon" href="../favicon.ico">
+    <meta name="description" content="Chat Bot UI/UX & html for web, UI/UX for chat bot, chat bot html, best chatbot, chatbot app, online chat bot plugin | Css3Transition " />
+    <meta name="keywords" content="Chat Bot UI/UX & html for web, UI/UX for chat bot, chat bot html, best chatbot, chatbot app, online chat bot plugin" />
+    <meta name="abstract" content="Chat Bot UI/UX & html for web, UI/UX for chat bot, chat bot html, best chatbot, chatbot app, online chat bot plugin">
+    <meta name="author" content="Rahul Yaduvanshi">
+    <meta name="technologies" content="HTML5, CSS3, HTML, CSS, JQUERY, Bootstrap, Angular">
+    <meta name="distribution" content="Global">
+    <meta name="development" content="Rahul Yaduvanshi">
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+    <meta name="city" content="New Delhi">
+    <meta name="country" content="india">
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="css/main.css" rel="stylesheet" type="text/css" />
+    <!-- END GLOBAL MANDATORY STYLES -->
+    <link href="css/select2.min.css" rel="stylesheet" type="text/css"/>
+    <link href="css/chatBot.css" rel="stylesheet" type="text/css"/>
+    <link href="css/timeline.css" rel="stylesheet" type="text/css"/>
+     
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .chatbot-container {
+            width: 90%;
+            max-width: 500px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin-bottom: 50px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chat-header {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 18px;
+            position: relative;
+        }
+
+        .cancel-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+
+        .cancel-button:hover {
+            color: red;
+        }
+
+        .chat-body {
+            padding: 15px;
+            max-height: 300px;
+            overflow-y: scroll;
+        }
+
+        .user-message,
+        .bot-message {
+            max-width: 80%;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 6px;
+        }
+
+        .user-message {
+            background-color: #e0e0e0;
+            align-self: flex-end;
+        }
+
+        .bot-message {
+            background-color: #4CAF50;
+            color: #fff;
+            align-self: flex-start;
+        }
+
+        .chat-input {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            border-top: 1px solid #ddd;
+            padding: 15px;
+        }
+
+        .user-input {
+            flex: 1;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+        }
+
+        .send-button {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 15px;
+        }
+
+        .option-button {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-bottom: 5px;
+        }
+
+        .cancel-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            z-index: 1;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .modal-buttons {
+            margin-top: 20px;
+        }
+
+        .modal-buttons button {
+            padding: 10px 15px;
+            margin: 0 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .modal-buttons .end-chat-btn {
+            background-color: red;
+            color: #fff;
+        }
+
+        .modal-buttons .cancel-btn {
+            background-color: #ddd;
+        }
+
+        .drop-email-button {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+
+        .email-input {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+ 
+    </div>
+    <div class="chatbot-container">
+        <div class="chat-header">
+            Welcome to ChatBot!
+            <span class="cancel-button" onclick="showCancelModal()">X</span>
+        </div>
+        <div class="chat-body" id="chatBody">
+            <div class="bot-message">Hello! How can I assist you today?</div>
+            <div class="options" id="optionsContainer">
+                <button class="option-button" onclick="redirectToOrders()">Track Orders</button>
+                <button class="option-button" onclick="redirectToProducts()">View Products</button>
+                <button class="option-button" onclick="redirectToOrderPage()">Order Now</button>
+                <button class="drop-email-button" onclick="showEmailInput()">Drop Email</button>
+                 <button class="drop-email-button" onclick="showFeedbackInput()">give feedback</button>
+                
+            </div>
+        </div>
+        <div class="email-input" id="emailInput">
+            <input type="email" class="form-control" id="inputEmail" placeholder="Enter your email...">
+            <button class="btn btn-primary mt-2" onclick="submitEmail()">Submit</button>
+        </div>
+ <div class="email-input" id="feedbackInput">
+            <input type="email" class="form-control" id="inputFeedback" placeholder="Enter your feedback...">
+            <button class="btn btn-primary mt-2" onclick="submitFeedback()">Submit</button>
+        </div>
+        <div class="chat-input">
+            <input type="text" class="user-input" id="userInput" placeholder="Type your message...">
+            <button class="send-button" onclick="sendMessage()">Send</button>
+        </div>
+
+        <div class="cancel-modal" id="cancelModal">
+            <div class="modal-content">
+                <p>Are you sure you want to end the chat?</p>
+                <div class="modal-buttons">
+                    <button class="end-chat-btn" onclick="endChat()">End Chat</button>
+                    <button class="cancel-btn" onclick="hideCancelModal()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function sendMessage() {
+            const userInput = document.getElementById('userInput').value;
+            if (userInput.trim().length >= 3) {
+                appendUserMessage(userInput);
+
+                const botResponse = getBotResponse(userInput);
+                appendBotMessage(botResponse);
+
+                document.getElementById('userInput').value = '';
+            } else {
+                alert('Please enter at least 3 characters.');
+            }
+        }
+
+        function appendUserMessage(message) {
+            const chatBody = document.getElementById('chatBody');
+            const userMessage = document.createElement('div');
+            userMessage.className = 'user-message';
+            userMessage.textContent = message;
+            chatBody.appendChild(userMessage);
+            chatBody.scrollTop = chatBody.scrollHeight;
+        }
+
+        function appendBotMessage(message) {
+            const chatBody = document.getElementById('chatBody');
+            const botMessage = document.createElement('div');
+            botMessage.className = 'bot-message';
+            botMessage.innerHTML = message;
+            chatBody.appendChild(botMessage);
+            chatBody.scrollTop = chatBody.scrollHeight;
+
+            const optionsContainer = document.getElementById('optionsContainer');
+            if (optionsContainer) {
+                chatBody.insertBefore(optionsContainer, botMessage.nextSibling);
+            }
+        }
+
+        function showCancelModal() {
+            document.getElementById('cancelModal').style.display = 'flex';
+        }
+
+        function hideCancelModal() {
+            document.getElementById('cancelModal').style.display = 'none';
+        }
+
+        function endChat() {
+            window.location.href = 'index.html'; // Redirect to index.html on ending chat
+        }
+
+        function redirectToOrders() {
+            window.location.href = 'vieworders.html'; // Redirect to view orders page
+        }
+
+        function redirectToProducts() {
+            window.location.href = 'productdetails.jsp'; // Redirect to view products page
+        }
+
+        function redirectToOrderPage() {
+            window.location.href = 'orderpage.html'; // Redirect to order page
+        }
+
+        // Function to display email input box
+        function showEmailInput() {
+            document.getElementById('emailInput').style.display = 'block';
+        }
+        function showFeedbackInput() {
+            document.getElementById('feedbackInput').style.display = 'block';
+        }
+        function clearChat() {
+            document.getElementById('chatBody').innerHTML = '';
+        }
+
+        function calculateLCS(str1, str2) {
+            // Function to calculate the length of the LCS
+            const m = str1.length;
+            const n = str2.length;
+            const dp = Array.from({ length: m + 1 }, () => Array(n + 1).fill(0));
+
+            for (let i = 1; i <= m; i++) {
+                for (let j = 1; j <= n; j++) {
+                    if (str1[i - 1] === str2[j - 1]) {
+                        dp[i][j] = dp[i - 1][j - 1] + 1;
+                    } else {
+                        dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
+                    }
+                }
+            }
+
+            return dp;
+        }
+
+        function findLCS(str1, str2) {
+            // Function to find the LCS and return the common subsequence
+            const dp = calculateLCS(str1, str2);
+            let i = str1.length;
+            let j = str2.length;
+            let lcs = "";
+
+            while (i > 0 && j > 0) {
+                if (str1[i - 1] === str2[j - 1]) {
+                    lcs = str1[i - 1] + lcs;
+                    i--;
+                    j--;
+                } else if (dp[i - 1][j] > dp[i][j - 1]) {
+                    i--;
+                } else {
+                    j--;
+                }
+            }
+
+            return lcs;
+        }
+
+        function selectOption(userInput, availableOptions, threshold = 3) {
+            userInput = userInput.toLowerCase();
+            let maxLCSLength = 0;
+            let selectedOption = "";
+
+            for (let option of availableOptions) {
+                const optionLower = option.toLowerCase();
+                const commonSubsequence = findLCS(userInput, optionLower);
+                const lcsLength = commonSubsequence.length;
+
+                if (lcsLength > maxLCSLength && lcsLength >= threshold) {
+                    maxLCSLength = lcsLength;
+                    selectedOption = option;
+                }
+            }
+
+            return selectedOption;
+        }
+
+        function getBotResponse(userInput) {
+            const availableOptions = ["Order Now", "View Products", "Track Orders"];
+            const selectedOption = selectOption(userInput, availableOptions);
+
+            if (selectedOption !== "") {
+                return `<div class="bot-message">How about <span class="option-button" onclick="handleOption('${selectedOption}')">${selectedOption}</span>?</div>`;
+            } else {
+                return "<div class='bot-message'>I'm sorry, I didn't understand. How can I assist you?</div>";
+            }
+        }
+
+        function handleOption(option) {
+            appendUserMessage(option);
+
+            if (option.toLowerCase() === 'order now') {
+                // Redirect to order page
+                window.location.href = 'orderpage.html';
+            } else if (option.toLowerCase() === 'view products') {
+                // Redirect to view products page
+                window.location.href = 'productdetails.jsp';
+            } else if (option.toLowerCase() === 'track orders') {
+                // Redirect to view orders page
+                window.location.href = 'vieworders.html';
+            } else {
+                // Handle other options
+            }
+
+            hideCancelModal(); // Close cancel modal if open
+        }
+
+        // Function to redirect to database page with email ID
+        function redirectToDatabase() {
+            const email = document.getElementById('inputEmail').value;
+            if (isValidEmail(email)) {
+                window.location.href = 'store_email.php?email=' + encodeURIComponent(email);
+            } else {
+                alert('Please enter a valid email address.');
+            }
+        }
+
+        function submitEmail() {
+            const email = document.getElementById('inputEmail').value;
+            if (isValidEmail(email)) {
+                // Redirect to database page with email ID
+                window.location.href = 'email.jsp?email=' + encodeURIComponent(email);
+                // Display a popup message
+                alert('Email entered successfully!');
+            } else {
+                alert('Please enter a valid email address.');
+            }
+        }
+
+        function submitFeedback() {
+            const feedback = document.getElementById('inputFeedback').value;
+            if (feedback.trim().length > 0) {
+                // Redirect to database page with feedback
+                window.location.href = 'feedback.jsp?feedback=' + encodeURIComponent(feedback);
+                // Display a popup message
+                alert('Feedback submitted successfully!');
+            } else {
+                alert('Please enter your feedback.');
+            }
+        }
+        // Function to validate email address
+        function isValidEmail(email) {
+            const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return regex.test(email);
+        }
+    </script>
+    <script src="https://ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js" data-cf-settings="257be86a981729866f2fa61c-|49" defer=""></script>
+<!-- Time line Html Ends -->
+<!-- BEGIN GLOBAL MANDATORY SCRIPTS -->
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/select2.min.js"></script>
+ <script>
+        $(document).ready(function(){
+            $(".select2_el").select2({
+            });
+        });
+        </script>
+<script>
+    $(document).ready(function () {
+        //Toggle fullscreen
+        $(".chat-bot-icon").click(function (e) {
+            $(this).children('img').toggleClass('hide');
+            $(this).children('svg').toggleClass('animate');
+            $('.chat-screen').toggleClass('show-chat');
+        });
+        $('.chat-mail button').click(function () {
+            $('.chat-mail').addClass('hide');
+            $('.chat-body').removeClass('hide');
+            $('.chat-input').removeClass('hide');
+            $('.chat-header-option').removeClass('hide');
+        });
+        $('.end-chat').click(function () {
+            $('.chat-body').addClass('hide');
+            $('.chat-input').addClass('hide');
+            $('.chat-session-end').removeClass('hide');
+            $('.chat-header-option').addClass('hide');
+        });
+    });
+
+</script>
+</body>
+
+</html>
