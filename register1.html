@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Page</title>
+    <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+    <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+    <link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+    <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" type="text/css" href="css/utill.css">
+    <link rel="stylesheet" type="text/css" href="css/mainn.css">
+    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+    <script src="vendor/animsition/js/animsition.min.js"></script>
+    <script src="vendor/bootstrap/js/popper.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="vendor/select2/select2.min.js"></script>
+    <script src="vendor/daterangepicker/moment.min.js"></script>
+    <script src="vendor/daterangepicker/daterangepicker.js"></script>
+    <script src="vendor/countdowntime/countdowntime.js"></script>
+    <script src="js/main.js"></script>
+      
+      <script>
+        function validatePassword() {
+            var password = document.getElementById("pass").value;
+
+            // Check for minimum length
+            if (password.length < 6) {
+                alert("Password must have a minimum of 6 characters");
+                return false;
+            }
+
+            // Check for special character
+            var specialCharacterRegex = /[!@#$%^&*()_+=[{\]};:'",<.>/?\\|`~-]/;
+            if (!specialCharacterRegex.test(password)) {
+                alert("Password must contain at least one special character");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+   <!--
+    <script>
+        var myInput = document.getElementById("psw");
+        var letter = document.getElementById("letter");
+        var capital = document.getElementById("capital");
+        var number = document.getElementById("number");
+        var length = document.getElementById("length");
+
+        // When the user clicks on the password field, show the message box
+        myInput.onfocus = function () {
+            document.getElementById("message").style.display = "block";
+        }
+
+        // When the user clicks outside of the password field, hide the message box
+        myInput.onblur = function () {
+            document.getElementById("message").style.display = "none";
+        }
+
+        // When the user starts to type something inside the password field
+        myInput.onkeyup = function () {
+            // Validate lowercase letters
+            var lowerCaseLetters = /[a-z]/g;
+            if (myInput.value.match(lowerCaseLetters)) {
+                letter.classList.remove("invalid");
+                letter.classList.add("valid");
+            } else {
+                letter.classList.remove("valid");
+                letter.classList.add("invalid");
+            }
+
+            // Validate capital letters
+            var upperCaseLetters = /[A-Z]/g;
+            if (myInput.value.match(upperCaseLetters)) {
+                capital.classList.remove("invalid");
+                capital.classList.add("valid");
+            } else {
+                capital.classList.remove("valid");
+                capital.classList.add("invalid");
+            }
+
+            // Validate numbers
+            var numbers = /[0-9]/g;
+            if (myInput.value.match(numbers)) {
+                number.classList.remove("invalid");
+                number.classList.add("valid");
+            } else {
+                number.classList.remove("valid");
+                number.classList.add("invalid");
+            }
+
+            // Validate length
+            if (myInput.value.length >= 8) {
+                length.classList.remove("invalid");
+                length.classList.add("valid");
+            } else {
+                length.classList.remove("valid");
+                length.classList.add("invalid");
+            }
+        }
+    </script>
+    -->
+    
+    
+  
+
+</head>
+
+<body>
+
+    <div class="limiter">
+        <div class="container-login100" style="background-image: url('images/bg-01.jpg');">
+            <div class="wrap-login100">
+                <form class="login100-form validate-form" action="register1.jsp" method="post" onsubmit="return validatePassword()">
+                    <span class="login100-form-logo">
+                        <i class="zmdi zmdi-shopping-cart"></i>
+                    </span>
+                    <span class="login100-form-title p-b-34 p-t-27">
+                        Register
+                    </span>
+                    <div class="wrap-input100 validate-input" data-validate="Enter your id">
+                        <input class="input100" type="text" name="userid" id="name" placeholder="id">
+                        <span class="focus-input100" data-placeholder="&#xf207;"></span>
+                    </div>
+                    <div class="wrap-input100 validate-input" data-validate="Enter your first name">
+                        <input class="input100" type="text" name="firstname" placeholder="First Name">
+                        <span class="focus-input100" data-placeholder="&#xf1ab;"></span>
+                    </div>
+                    <div class="wrap-input100 validate-input" data-validate="Enter your last name">
+                        <input class="input100" type="text" name="lastname" placeholder="Last Name">
+                        <span class="focus-input100" data-placeholder="&#xf2be;"></span>
+                    </div>
+                    <div class="wrap-input100 validate-input" data-validate="Enter your username">
+                        <input class="input100" type="text" name="username" placeholder="Username">
+                        <span class="focus-input100" data-placeholder="&#xf2c2;"></span>
+                    </div>
+                    <div class="wrap-input100 validate-input" data-validate="Enter your password">
+                        <input class="input100" type="password" name="pass" id="pass" placeholder="Password"
+                            pattern=".{4,}" title="Password must have a minimum of 4 characters" required>
+                        <span class="focus-input100" data-placeholder="&#xf2c2;"></span>
+                    </div>
+                    <div class="container-login100-form-btn">
+                        <button class="login100-form-btn" type="submit" >
+                        
+                            Register
+                        </button>
+                    </div>
+                    <div class="text-center p-t-90">
+                        <a class="txt1" href="index.html">
+                            home
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="dropDownSelect1"></div>
+</body>
+
+</html>
